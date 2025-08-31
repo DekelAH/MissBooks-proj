@@ -10,7 +10,7 @@ export const bookService = {
     query,
     get,
     remove,
-    save,
+    save
 }
 
 function query() {
