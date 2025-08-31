@@ -47,6 +47,7 @@ a {
 	text-decoration: none;
 	color: unset;
 	cursor: pointer;
+	font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
 
@@ -178,6 +179,11 @@ input:focus {
 	font-size: 1em;
 }
 
+.about-us {
+
+	font-size: 1em;
+}
+
 .app-header {
 	background-color: var(--clr1);
 	color: white;
@@ -206,9 +212,19 @@ a.active {
 	text-decoration: underline;
 }
 
+.app-header a {
+
+	margin-inline-start: 3px;
+}
+
 
 @media (max-width: 720px) {
 	.app-header {
 		color: var(--clr2bg-light);
 	}
 }
+
+
+/* Components */
+
+@import "../style/BookIndex.css";
