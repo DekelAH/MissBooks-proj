@@ -1,0 +1,12 @@
+.book-preview {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    border: 2px solid var(--clr1);
+    border-radius: 5%;
+}

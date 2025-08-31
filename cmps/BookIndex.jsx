@@ -1,22 +1,25 @@
 import { bookService } from "../services/bookService.js"
+import { BookList } from "./BookList.jsx"
 
 const { useState, useEffect } = React
 
 
 export function BookIndex() {
 
-    const [books, setBooks] = useState(null)
+    const [books, setBooks] = useState([])
     useEffect(() => {
 
         bookService.query()
             .then(setBooks)
             .catch((err) => console.log('Error getting books data', err))
-    })
+    }, [])
     return (
 
         <section className="book-index">
-            <h1>Hello From Book Index</h1>
-            {books}
+            <BookList
+                key={books.map(book => book.id)}
+                books={books}
+            />
         </section>
 
     )
