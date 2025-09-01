@@ -1,28 +1,16 @@
+const { Link, NavLink } = ReactRouterDOM
 
-export function AppHeader({ page = 'home', onSetPage }) {
+export function AppHeader() {
 
-    function onPageChange(ev, page) {
-        ev.preventDefault()
-        onSetPage(page)
-    }
 
     return (
         <header className="app-header full main-layout">
             <section className="header-container">
                 <h1>Miss Books</h1>
                 <nav>
-                    <a href="" className={(page === 'home') ? 'active' : ''}
-                        onClick={(ev) => onPageChange(ev, 'home')}>
-                        Home
-                    </a> |
-                    <a href="" className={(page === 'about-us') ? 'active' : ''}
-                        onClick={(ev) => onPageChange(ev, 'about-us')}>
-                        About Us
-                    </a> |
-                    <a href="" className={(page === 'books') ? 'active' : ''}
-                        onClick={(ev) => onPageChange(ev, 'books')}>
-                        Books
-                    </a> |
+                    <NavLink to="/home">Home</NavLink> |
+                    <NavLink to="/about-us">About Us</NavLink> |
+                    <NavLink to="/book">Books</NavLink> |
                 </nav>
             </section>
         </header>

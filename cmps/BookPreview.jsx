@@ -5,13 +5,13 @@ export function BookPreview({ book }) {
     return (
 
         <div className="book-preview">
-            <h1>{book.title}</h1>
-            <h2>{book.subtitle}</h2>
-            <h2>{book.authors[0]}</h2>
-            <span>{book.publishedDate}</span>
-            <span>{book.pageCount}</span>
-            <span>{book.listPrice.amount}</span>
-            <span>{book.listPrice.isOnSale}</span>
+            <img className="book-image" src= {book.thumbnail}/>
+            <h1>Title: {book.title}</h1>
+            <h1>Author: {book.authors[0]}</h1>
+            <span>Published: {book.publishedDate}</span>
+            <span>Pages: {book.pageCount}</span>
+            <span>Price: {book.listPrice.amount}</span>
+            <span>Sale: {book.listPrice.isOnSale}</span>
         </div>
     )
 }
