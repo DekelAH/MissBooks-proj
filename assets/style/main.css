@@ -7,6 +7,7 @@
 @import "cmps/BookIndex.css";
 @import "cmps/BookList.css";
 @import "cmps/BookPreview.css";
+@import "cmps/BookDetails.css";
 @import "cmps/NotFound.css";
 
 /* Vars */
@@ -41,7 +42,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+span,
+button {
 	margin: .5em 0 .5em;
 	font-family: 'Edu VIC WA NT Beginner', cursive;
 }
@@ -79,6 +82,7 @@ object {
 
 button {
 	cursor: pointer;
+	font-weight: bold;
 	background-color: var(--clr2bg);
 	margin: 0.5em;
 	border: 0;
@@ -159,6 +163,12 @@ input:focus {
 }
 
 /* Layout */
+
+main {
+
+	display: flex;
+	justify-content: center;
+}
 .main-layout {
 	display: grid;
 	grid-template-columns: 1.6rem 1fr 1.6rem;

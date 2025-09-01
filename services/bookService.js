@@ -17,7 +17,7 @@ function query() {
 
     return storageService.query(BOOK_KEY)
         .then((books) => {
-            console.log(books)
+
             if (books) return books
         })
 }
@@ -25,7 +25,7 @@ function query() {
 function get(bookId) {
 
     return storageService.get(BOOK_KEY, bookId)
-        .then((book) => { if (book) return book })
+        .then(book => _setNextPrevBookId(book))
 }
 
 function remove(bookId) {
@@ -42,10 +42,22 @@ function save(book) {
     }
 }
 
+function _setNextPrevBookId(book) {
+
+    return query().then((books) => {
+        const bookIdx = books.findIndex((currentBook) => currentBook.id === book.id)
+        const nextBook = books[bookIdx + 1] ? books[bookIdx + 1] : books[0]
+        const preBook = books[bookIdx - 1] ? books[bookIdx - 1] : books[books.length - 1]
+        book.nextBookId = nextBook.id
+        book.preBookId = preBook.id
+        return book
+    })
+}
+
 function _createBooks() {
 
     let books = utilService.loadFromStorage(BOOK_KEY)
-    
+
     if (!books || !books.length) {
         const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
         const books = []

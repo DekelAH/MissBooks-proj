@@ -10,7 +10,7 @@ export function BookPreview({ book }) {
             <h1>Author: {book.authors[0]}</h1>
             <span>Published: {book.publishedDate}</span>
             <span>Pages: {book.pageCount}</span>
-            <span>Price: {book.listPrice.amount}</span>
+            <span>Price: {book.listPrice.amount} {book.listPrice.currencyCode}</span>
             <span>Sale: {book.listPrice.isOnSale}</span>
         </div>
     )
