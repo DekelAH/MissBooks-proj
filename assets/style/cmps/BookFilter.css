@@ -1,0 +1,48 @@
+.book-filter {
+
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.filter-form {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-filter button {
+
+    width: 150px;
+}
+
+.book-filter input[type="range"] {
+
+    display: flex;
+    justify-content: center;
+    /* Centers horizontally */
+    align-items: center;
+    /* Centers vertically if needed */
+    width: 20%;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    accent-color: var(--clr1);
+}
+
+.book-filter label {
+
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-weight: bold;
+}
+
+.book-filter input {
+
+    width: 200px;
+    padding: 10px;
+    margin-inline-end: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
