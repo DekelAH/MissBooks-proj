@@ -1,4 +1,5 @@
 import { bookService } from "../services/bookService.js"
+
 import { LongTxt } from "./LongTxt.jsx"
 
 const { useState, useEffect } = React
@@ -22,39 +23,8 @@ export function BookDetails() {
 
     }, [params.bookId])
 
-    function setReadingDifficultyByPageCount(pageCount) {
 
-        if (pageCount > 500) {
-            return 'Serious Reading'
-        }
-        if (pageCount > 200) {
-            return 'Decent Reading'
-        }
-        return 'Light Reading'
-    }
 
-    function setBookTimeStamp(year) {
-
-        let currentDate = new Date()
-        let timeStamp = currentDate.getFullYear() - year
-        if (timeStamp >= 10) {
-            return 'Vintage Book'
-        } else if (timeStamp <= 1) {
-            return 'New Book'
-        }
-        return year
-    }
-
-    function setPriceColor(price) {
-
-        if (price > 150) {
-
-            return 'price-expensive'
-        } else if (price < 20) {
-
-            return 'price-cheap'
-        }
-    }
 
     return (
 
@@ -69,9 +39,9 @@ export function BookDetails() {
                 <h1>Description: <LongTxt text={book.description} limit={100}/></h1>
                 <h1>Language: <span>{book.language}</span></h1>
                 <h1>Subtitle: <span>{book.subtitle}</span></h1>
-                <h1>Price: <span className={setPriceColor(book.listPrice.amount)}>{book.listPrice.amount} {book.listPrice.currencyCode}</span></h1>
-                <h1>Pages: <span>{setReadingDifficultyByPageCount(book.pageCount)}</span></h1>
-                <h1>Published: <span>{setBookTimeStamp(book.publishedDate)}</span></h1>
+                <h1>Price: <span className={bookService.setPriceColor(book.listPrice.amount)}>{book.listPrice.amount} {book.listPrice.currencyCode}</span></h1>
+                <h1>Pages: <span>{bookService.setReadingDifficultyByPageCount(book.pageCount)}</span></h1>
+                <h1>Published: <span>{bookService.setBookTimeStamp(book.publishedDate)}</span></h1>
             </div>
             <div className="btn-section">
                 <button ><Link to={`/book/${book.preBookId}`}>Prev</Link></button>

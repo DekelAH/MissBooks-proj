@@ -37,3 +37,13 @@ span {
     font-weight: bolder;
     margin-inline-start: 30%;
 }
+
+.price-expensive {
+
+    color: red;
+}
+
+.price-cheap {
+
+    color: green;
+}

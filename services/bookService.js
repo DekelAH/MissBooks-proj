@@ -11,7 +11,10 @@ export const bookService = {
     get,
     remove,
     save,
-    getDefaultFilter
+    getDefaultFilter,
+    setBookTimeStamp,
+    setReadingDifficultyByPageCount,
+    setPriceColor
 }
 
 function query(filterBy = {}) {
@@ -63,6 +66,40 @@ function save(book) {
 function getDefaultFilter() {
 
     return { txt: '', price: '', pageCount: '', publishedDate: '' }
+}
+
+function setBookTimeStamp(year) {
+
+    let currentDate = new Date()
+    let timeStamp = currentDate.getFullYear() - year
+    if (timeStamp >= 10) {
+        return 'Vintage Book'
+    } else if (timeStamp <= 1) {
+        return 'New Book'
+    }
+    return year
+}
+
+function setReadingDifficultyByPageCount(pageCount) {
+
+    if (pageCount > 500) {
+        return 'Serious Reading'
+    }
+    if (pageCount > 200) {
+        return 'Decent Reading'
+    }
+    return 'Light Reading'
+}
+
+function setPriceColor(price) {
+
+    if (price > 150) {
+
+        return 'price-expensive'
+    } else if (price < 20) {
+
+        return 'price-cheap'
+    }
 }
 
 function _setNextPrevBookId(book) {
