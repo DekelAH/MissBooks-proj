@@ -23,6 +23,16 @@ export function BookIndex() {
         setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
     }
 
+    function onRemoveBook(bookId) {
+        bookService.remove(bookId)
+            .then(() => {
+                setBooks(books => books.filter(book => book.id !== bookId))
+            })
+            .catch(err => {
+                console.log('Problems removing book:', err)
+            })
+    }
+
     if (!books) return <div className="loading-overlay">Loading BoOoOoks...</div>
 
     return (
@@ -33,6 +43,7 @@ export function BookIndex() {
             <BookList
                 key={books.map(book => book.id)}
                 books={books}
+                onRemoveBook={onRemoveBook}
             />
         </section>
 

@@ -4,7 +4,7 @@ const { NavLink } = ReactRouterDOM
 
 
 
-export function BookList({ books }) {
+export function BookList({ books, onRemoveBook }) {
 
 
     return (
@@ -17,7 +17,7 @@ export function BookList({ books }) {
                         <section className="btn-section">
                             <button><NavLink to={`/book/${book.id}`}>Details</NavLink></button>
                             <button><NavLink to={`/book/${book.id}`}>Edit</NavLink></button>
-                            <button>Remove</button>
+                            <button onClick={() => onRemoveBook(book.id)}>Remove</button>
                         </section>
                     </div>
                 )

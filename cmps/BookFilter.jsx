@@ -31,7 +31,6 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
                 value = +target.value
                 break;
             case 'checkbox':
-
                 setIsChecked(target.checked)
                 value = target.checked
                 break;
