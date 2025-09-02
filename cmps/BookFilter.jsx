@@ -5,8 +5,9 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     const [priceRangeValue, setPriceRangeValue] = useState(0)
+    const [isChecked, setIsChecked] = useState(false)
 
-    const { txt, price, pageCount, publishedDate } = filterByToEdit
+    const { txt, price, pageCount, publishedDate, onSale } = filterByToEdit
 
     useEffect(() => {
 
@@ -28,6 +29,11 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
                 break;
             case 'number':
                 value = +target.value
+                break;
+            case 'checkbox':
+
+                setIsChecked(target.checked)
+                value = target.checked
                 break;
             default:
                 break;
@@ -60,7 +66,10 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
                 <label htmlFor="publishedDate">Published</label>
                 <input onChange={handleChange} type="number" value={publishedDate} min="1940" name="publishedDate" id="publishedDate" />|
 
-                <button type="submit">Filter</button>
+                <label htmlFor="onSale">On Sale</label>
+                <input onChange={handleChange} checked={isChecked} type="checkbox" value={onSale} name="onSale" id="onSale" />
+
+                <button className="filter-btn" type="submit">Filter</button>
             </form>
         </section>
 

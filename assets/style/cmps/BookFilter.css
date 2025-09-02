@@ -14,7 +14,12 @@
 
 .book-filter button {
 
-    width: 150px;
+    width: 100px;
+}
+
+.book-filter input[type="checkbox"] {
+
+    width: 20px;
 }
 
 .book-filter input[type="range"] {
@@ -27,6 +32,13 @@
     border-radius: 5px;
     outline: none;
     accent-color: var(--clr1);
+}
+
+.book-filter input[type="number"] {
+
+
+    width: 10%;
+
 }
 
 .book-filter label {

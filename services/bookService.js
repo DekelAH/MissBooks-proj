@@ -39,6 +39,10 @@ function query(filterBy = {}) {
                 books = books.filter(book => book.publishedDate >= filterBy.publishedDate)
             }
 
+            if (filterBy.onSale) {
+                books = books.filter(book => book.listPrice.isOnSale)
+            }
+
             return books
         })
 }
@@ -65,7 +69,7 @@ function save(book) {
 
 function getDefaultFilter() {
 
-    return { txt: '', price: '', pageCount: '', publishedDate: '' }
+    return { txt: '', price: '', pageCount: '', publishedDate: '', onSale: '' }
 }
 
 function setBookTimeStamp(year) {
