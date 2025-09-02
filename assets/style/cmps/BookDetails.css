@@ -13,6 +13,16 @@
     overflow: hidden;
 }
 
+.on-sale {
+
+    position: absolute;
+    text-align: center;
+    width: 25%;
+    background-color: rgba(255, 255, 255, 0.61);
+    border: 2px solid red;
+    color: red;
+}
+
 .price-expensive {
 
     color: red;

@@ -60,6 +60,7 @@ export function BookDetails() {
         book &&
         <section className="book-details">
             <img className="book-details-image" src={book.thumbnail} alt="book-image" />
+            {book.listPrice.isOnSale && <h2 className="on-sale">On Sale!</h2>}
             <div className="details">
                 <h2>Title: {book.title}</h2>
                 <h2>Author: {book.authors[0]}</h2>
@@ -68,7 +69,6 @@ export function BookDetails() {
                 <h1>Language: <span>{book.language}</span></h1>
                 <h1>Subtitle: <span>{book.subtitle}</span></h1>
                 <h1>Price: <span className={setPriceColor(book.listPrice.amount)}>{book.listPrice.amount} {book.listPrice.currencyCode}</span></h1>
-                <h1>Sale: <span>{book.listPrice.isOnSale}</span></h1>
                 <h1>Pages: <span>{setReadingDifficultyByPageCount(book.pageCount)}</span></h1>
                 <h1>Published: <span>{setBookTimeStamp(book.publishedDate)}</span></h1>
             </div>
