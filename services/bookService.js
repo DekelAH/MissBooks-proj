@@ -28,6 +28,14 @@ function query(filterBy = {}) {
                 books = books.filter(book => book.listPrice.amount >= filterBy.price)
             }
 
+            if (filterBy.pageCount) {
+                books = books.filter(book => book.pageCount >= filterBy.pageCount)
+            }
+
+            if (filterBy.publishedDate) {
+                books = books.filter(book => book.publishedDate >= filterBy.publishedDate)
+            }
+
             return books
         })
 }
@@ -54,7 +62,7 @@ function save(book) {
 
 function getDefaultFilter() {
 
-    return { txt: '', price: '' }
+    return { txt: '', price: '', pageCount: '', publishedDate: '' }
 }
 
 function _setNextPrevBookId(book) {

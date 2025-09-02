@@ -4,9 +4,9 @@ const { useState, useEffect } = React
 export function BookFilter({ filterBy, onSetFilterBy }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    const [rangeValue, setRangeValue] = useState(0)
+    const [priceRangeValue, setPriceRangeValue] = useState(0)
 
-    const { txt, price } = filterByToEdit
+    const { txt, price, pageCount, publishedDate } = filterByToEdit
 
     useEffect(() => {
 
@@ -21,12 +21,14 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
         switch (target.type) {
             case 'range':
                 value = +target.value
-                setRangeValue(value)
+                setPriceRangeValue(value)
                 break;
             case 'text':
                 value = target.value
                 break;
-
+            case 'number':
+                value = +target.value
+                break;
             default:
                 break;
         }
@@ -46,11 +48,17 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
             <h2>Filter our books</h2>
             <form className="filter-form" onSubmit={onSubmitFilter}>
                 <label htmlFor="txt">Title</label>
-                <input onChange={handleChange} type="text" value={txt} name="txt" id="txt" />
+                <input onChange={handleChange} type="text" value={txt} name="txt" id="txt" /> |
 
                 <label htmlFor="price">Price</label>
-                <input onChange={handleChange} type="range" value={price} min="0" max="500" name="price" id="price"/>
-                <output>{rangeValue}</output>
+                <input onChange={handleChange} type="range" value={price} min="0" max="500" name="price" id="price" />
+                <output>{priceRangeValue}</output> |
+
+                <label htmlFor="pageCount">Pages</label>
+                <input onChange={handleChange} type="number" value={pageCount} min="0" name="pageCount" id="pageCount" />|
+
+                <label htmlFor="publishedDate">Published</label>
+                <input onChange={handleChange} type="number" value={publishedDate} min="1940" name="publishedDate" id="publishedDate" />|
 
                 <button type="submit">Filter</button>
             </form>
