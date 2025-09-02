@@ -15,8 +15,8 @@ export function BookList({ books }) {
                     <div className="book-card" key={book.id}>
                         <BookPreview book={book} />
                         <section className="btn-section">
-                            <button ><NavLink to={`/book/${book.id}`}>Details</NavLink></button>
-                            <button>Edit</button>
+                            <button><NavLink to={`/book/${book.id}`}>Details</NavLink></button>
+                            <button><NavLink to={`/book/${book.id}`}>Edit</NavLink></button>
                             <button>Remove</button>
                         </section>
                     </div>

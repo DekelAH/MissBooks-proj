@@ -11,14 +11,49 @@ export function BookDetails() {
     const params = useParams()
     const navigate = useNavigate()
 
+
     useEffect(() => {
 
         bookService.get(params.bookId)
             .then(book => setBook(book))
             .catch(err => console.log("Error fetching required book!", err))
 
-        
+
     }, [params.bookId])
+
+    function setReadingDifficultyByPageCount(pageCount) {
+
+        if (pageCount > 500) {
+            return 'Serious Reading'
+        }
+        if (pageCount > 200) {
+            return 'Decent Reading'
+        }
+        return 'Light Reading'
+    }
+
+    function setBookTimeStamp(year) {
+
+        let currentDate = new Date()
+        let timeStamp = currentDate.getFullYear() - year
+        if (timeStamp >= 10) {
+            return 'Vintage Book'
+        } else if (timeStamp <= 1) {
+            return 'New Book'
+        }
+        return year
+    }
+
+    function setPriceColor(price) {
+
+        if (price > 150) {
+
+            return 'price-expensive'
+        } else if (price < 20) {
+
+            return 'price-cheap'
+        }
+    }
 
     return (
 
@@ -32,10 +67,10 @@ export function BookDetails() {
                 <h1>Description: <span>{book.description}</span></h1>
                 <h1>Language: <span>{book.language}</span></h1>
                 <h1>Subtitle: <span>{book.subtitle}</span></h1>
-                <h1>Price: <span>{book.listPrice.amount} {book.listPrice.currencyCode}</span></h1>
+                <h1>Price: <span className={setPriceColor(book.listPrice.amount)}>{book.listPrice.amount} {book.listPrice.currencyCode}</span></h1>
                 <h1>Sale: <span>{book.listPrice.isOnSale}</span></h1>
-                <h1>Pages: <span>{book.pageCount}</span></h1>
-                <h1>Published: <span>{book.publishedDate}</span></h1>
+                <h1>Pages: <span>{setReadingDifficultyByPageCount(book.pageCount)}</span></h1>
+                <h1>Published: <span>{setBookTimeStamp(book.publishedDate)}</span></h1>
             </div>
             <div className="btn-section">
                 <button ><Link to={`/book/${book.preBookId}`}>Prev</Link></button>

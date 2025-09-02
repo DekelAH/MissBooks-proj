@@ -21,9 +21,7 @@
 
     display: flex;
     justify-content: center;
-    /* Centers horizontally */
     align-items: center;
-    /* Centers vertically if needed */
     width: 20%;
     background: #ddd;
     border-radius: 5px;
@@ -45,4 +43,10 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+}
+
+output {
+
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-weight: bold;
 }

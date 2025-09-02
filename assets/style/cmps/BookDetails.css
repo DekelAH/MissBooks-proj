@@ -13,6 +13,16 @@
     overflow: hidden;
 }
 
+.price-expensive {
+
+    color: red;
+}
+
+.price-cheap {
+
+    color: green;
+}
+
 .btn-section {
 
     width: 100%;

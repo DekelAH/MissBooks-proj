@@ -4,6 +4,9 @@ const { useState, useEffect } = React
 export function BookFilter({ filterBy, onSetFilterBy }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
+    const [rangeValue, setRangeValue] = useState(0)
+
+    const { txt, price } = filterByToEdit
 
     useEffect(() => {
 
@@ -18,9 +21,10 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
         switch (target.type) {
             case 'range':
                 value = +target.value
+                setRangeValue(value)
                 break;
-            case 'number':
-                value = +target.value
+            case 'text':
+                value = target.value
                 break;
 
             default:
@@ -36,7 +40,6 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
     }
 
 
-    const { txt, price } = filterByToEdit
     return (
 
         <section className="book-filter">
@@ -46,7 +49,8 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
                 <input onChange={handleChange} type="text" value={txt} name="txt" id="txt" />
 
                 <label htmlFor="price">Price</label>
-                <input onChange={handleChange} type="range" value={price} min="0" max="500" name="price" id="price" />
+                <input onChange={handleChange} type="range" value={price} min="0" max="500" name="price" id="price"/>
+                <output>{rangeValue}</output>
 
                 <button type="submit">Filter</button>
             </form>
