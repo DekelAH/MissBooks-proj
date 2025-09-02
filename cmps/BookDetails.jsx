@@ -1,4 +1,5 @@
 import { bookService } from "../services/bookService.js"
+import { LongTxt } from "./LongTxt.jsx"
 
 const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -65,7 +66,7 @@ export function BookDetails() {
                 <h2>Title: {book.title}</h2>
                 <h2>Author: {book.authors[0]}</h2>
                 <h1>Category: <span>{book.categories[0]}</span></h1>
-                <h1>Description: <span>{book.description}</span></h1>
+                <h1>Description: <LongTxt text={book.description} limit={100}/></h1>
                 <h1>Language: <span>{book.language}</span></h1>
                 <h1>Subtitle: <span>{book.subtitle}</span></h1>
                 <h1>Price: <span className={setPriceColor(book.listPrice.amount)}>{book.listPrice.amount} {book.listPrice.currencyCode}</span></h1>
