@@ -60,11 +60,19 @@ function remove(bookId) {
 
 function save(book) {
 
+    book.listPrice = { isOnSale: book.isOnSale, currencyCode: book.currencyCode, amount: book.amount }
+    book.thumbnail = `http://ca.org/books-photos/4.jpg`;
+
     if (book.id) {
         return storageService.put(BOOK_KEY, book)
     } else {
         return storageService.post(BOOK_KEY, book)
     }
+}
+
+function getEmptyBook(book = {}) {
+
+    return {}
 }
 
 function getDefaultFilter() {

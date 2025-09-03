@@ -1,0 +1,63 @@
+.book-edit {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: large;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-weight: bold;
+}
+
+.edit-form {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25vw;
+    margin-bottom: 20px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    box-shadow: 1px 4px 4px 1px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+
+.input-section {
+
+    display: flex;
+    margin-block: 5px;
+    align-items: center;
+    justify-content: space-between;
+    width: 20vw;
+}
+
+.edit-form button {
+
+    width: 20vw;
+    font-size: large;
+
+}
+
+.edit-form input {
+
+    width: 250px;
+    padding: 10px;
+    margin-inline-end: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-form input[type="checkbox"] {}
+
+.edit-form textarea {
+
+    width: 250px;
+    padding: 10px;
+    margin-inline-end: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-form label {
+
+    margin-inline: 5px;
+}

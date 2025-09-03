@@ -16,7 +16,7 @@ export function BookList({ books, onRemoveBook }) {
                         <BookPreview book={book} />
                         <section className="btn-section">
                             <button><NavLink to={`/book/${book.id}`}>Details</NavLink></button>
-                            <button><NavLink to={`/book/${book.id}`}>Edit</NavLink></button>
+                            <button><NavLink to={`/book/edit/${book.id}`}>Edit</NavLink></button>
                             <button onClick={() => onRemoveBook(book.id)}>Remove</button>
                         </section>
                     </div>

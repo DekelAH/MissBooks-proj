@@ -2,7 +2,14 @@
 
     display: flex;
     justify-content: space-around;
+    align-items: center;
     margin-bottom: 20px;
+}
+
+.book-filter h2 {
+
+    margin-inline-end: 20px;
+    text-align: center;
 }
 
 .filter-form {

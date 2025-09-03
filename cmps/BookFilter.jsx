@@ -66,7 +66,7 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
                 <input onChange={handleChange} type="number" value={publishedDate} min="1940" name="publishedDate" id="publishedDate" />|
 
                 <label htmlFor="onSale">On Sale</label>
-                <input onChange={handleChange} checked={isChecked} type="checkbox" value={onSale} name="onSale" id="onSale" />
+                <input onChange={handleChange} checked={isChecked} type="checkbox" value={onSale || ''} name="onSale" id="onSale" />
 
                 <button className="filter-btn" type="submit">Filter</button>
             </form>
