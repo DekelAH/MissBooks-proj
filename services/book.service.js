@@ -60,7 +60,7 @@ function remove(bookId) {
 
 function save(book) {
 
-    book.listPrice = { isOnSale: book.isOnSale, currencyCode: book.currencyCode, amount: book.amount }
+    // book.listPrice = { isOnSale: book.isOnSale, currencyCode: book.currencyCode, amount: book.amount }
     book.thumbnail = `http://ca.org/books-photos/4.jpg`;
 
     if (book.id) {
@@ -77,7 +77,7 @@ function getEmptyBook(book = {}) {
 
 function getDefaultFilter() {
 
-    return { txt: '', price: '', pageCount: '', publishedDate: '', onSale: '' }
+    return { txt: '', price: 0, pageCount: '', publishedDate: '', onSale: '' }
 }
 
 function setBookTimeStamp(year) {

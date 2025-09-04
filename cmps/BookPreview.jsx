@@ -8,7 +8,7 @@ export function BookPreview({ book }) {
     return (
 
         <div className="book-preview">
-            <img className="book-image" src={book.thumbnail} />
+            <img className="book-image" src={book.thumbnail} alt="book image"/>
             {book.listPrice.isOnSale && <h2 className="on-sale">On Sale!</h2>}
             <h1>Title: {book.title}</h1>
             <h1>Author: {book.authors[0]}</h1>

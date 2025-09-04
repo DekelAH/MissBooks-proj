@@ -7,16 +7,18 @@ const { useNavigate, useParams } = ReactRouterDOM
 
 
 export function BookEdit() {
-    
+
     const [bookToEdit, setBookToEdit] = useState({
 
         authors: [],
         categories: [],
         description: '',
         language: '',
-        amount: 0,
-        currencyCode: '',
-        isOnSale: false,
+        listPrice: {
+            currencyCode: '',
+            isOnSale: false,
+            amount: 0,
+        },
         pageCount: 0,
         publishedDate: 0,
         subtitle: '',
@@ -31,10 +33,10 @@ export function BookEdit() {
         if (bookId) {
             bookService.get(bookId)
                 .then(book => {
-                    book.amount = book.listPrice.amount
-                    book.currencyCode = book.listPrice.currencyCode
-                    book.isOnSale = book.listPrice.isOnSale
-                    delete book.listPrice
+                    // book.amount = book.listPrice.amount
+                    // book.currencyCode = book.listPrice.currencyCode
+                    // book.isOnSale = book.listPrice.isOnSale
+                    // delete book.listPrice
                     setBookToEdit(book)
                     showSuccessMsg('Book fetched successfuly!')
                 })
@@ -80,10 +82,19 @@ export function BookEdit() {
                 break;
         }
 
+        if (field === 'amount' || field === 'currencyCode' || field === 'isOnSale') {
+
+            console.log(field)
+            return setBookToEdit((prevBook) => ({ ...prevBook, listPrice: { ...prevBook.listPrice, [field]: value } }))
+        }
+
         setBookToEdit((prevBook) => ({ ...prevBook, [field]: value }))
     }
 
-    const { authors, categories, description, language, amount, currencyCode, isOnSale, pageCount, publishedDate, subtitle, title } = bookToEdit
+    console.log(bookToEdit)
+    const { authors, categories, description, language, pageCount, publishedDate, subtitle, title } = bookToEdit
+    const { amount, currencyCode, isOnSale } = bookToEdit.listPrice
+
     return (
         <section onSubmit={onSaveBook} className="book-edit">
             <h2>{bookId ? 'Edit' : 'Add'} Book</h2>

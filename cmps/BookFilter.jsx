@@ -10,8 +10,8 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
     const { txt, price, pageCount, publishedDate, onSale } = filterByToEdit
 
     useEffect(() => {
-
-        setFilterByToEdit(filterByToEdit)
+        // console.log('Hello')
+         onSetFilterBy(filterByToEdit)
     }, [filterByToEdit])
 
 
