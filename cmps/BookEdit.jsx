@@ -1,11 +1,13 @@
 
-import { bookService } from "../services/bookService.js"
+import { bookService } from "../services/book.service.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 const { useState, useEffect } = React
 const { useNavigate, useParams } = ReactRouterDOM
 
 
 export function BookEdit() {
+    
     const [bookToEdit, setBookToEdit] = useState({
 
         authors: [],
@@ -34,8 +36,12 @@ export function BookEdit() {
                     book.isOnSale = book.listPrice.isOnSale
                     delete book.listPrice
                     setBookToEdit(book)
+                    showSuccessMsg('Book fetched successfuly!')
                 })
-                .catch(err => console.log("Error fetching required book!", err))
+                .catch(err => {
+                    console.log("Error fetching required book!", err)
+                    showErrorMsg('Error fetching required book!')
+                })
         }
     }, [])
 
@@ -43,10 +49,14 @@ export function BookEdit() {
         ev.preventDefault()
         bookService.save(bookToEdit)
             .then(book => {
+                showSuccessMsg('Book saved successfuly!')
                 navigate('/book')
                 console.log('book:', book)
             })
-            .catch(err => console.log('Error trying to save the book', err))
+            .catch(err => {
+                console.log('Error trying to save the book', err)
+                showErrorMsg('Error trying to save the book')
+            })
     }
 
     function handleChange({ target }) {

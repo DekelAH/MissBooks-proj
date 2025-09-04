@@ -12,6 +12,7 @@
 @import "cmps/BookEdit.css";
 @import "cmps/LongTxt.css";
 @import "cmps/NotFound.css";
+@import "cmps/UserMsg.css";
 
 /* Vars */
 :root {

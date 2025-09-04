@@ -1,4 +1,5 @@
-import { bookService } from "../services/bookService.js"
+import { bookService } from "../services/book.service.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { BookFilter } from "./BookFilter.jsx"
 import { BookList } from "./BookList.jsx"
 
@@ -29,9 +30,11 @@ export function BookIndex() {
         bookService.remove(bookId)
             .then(() => {
                 setBooks(books => books.filter(book => book.id !== bookId))
+                showSuccessMsg('Book removed successfuly!')
             })
             .catch(err => {
-                console.log('Problems removing book:', err)
+                console.log('Problem removing book:', err)
+                showErrorMsg('Problem removing book')
             })
     }
 
