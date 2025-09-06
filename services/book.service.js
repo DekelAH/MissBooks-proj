@@ -14,7 +14,8 @@ export const bookService = {
     getDefaultFilter,
     setBookTimeStamp,
     setReadingDifficultyByPageCount,
-    setPriceColor
+    setPriceColor,
+    addReview
 }
 
 function query(filterBy = {}) {
@@ -60,7 +61,6 @@ function remove(bookId) {
 
 function save(book) {
 
-    // book.listPrice = { isOnSale: book.isOnSale, currencyCode: book.currencyCode, amount: book.amount }
     book.thumbnail = `http://ca.org/books-photos/4.jpg`;
 
     if (book.id) {
@@ -70,9 +70,18 @@ function save(book) {
     }
 }
 
-function getEmptyBook(book = {}) {
+function addReview(bookId, review) {
 
-    return {}
+    return get(bookId)
+        .then(book => {
+
+            if (!book.reviews) {
+                let newReviews = []
+                book.reviews = newReviews.push(review)
+            }
+
+            book.reviews.push(review)
+        })
 }
 
 function getDefaultFilter() {

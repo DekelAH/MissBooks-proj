@@ -33,10 +33,6 @@ export function BookEdit() {
         if (bookId) {
             bookService.get(bookId)
                 .then(book => {
-                    // book.amount = book.listPrice.amount
-                    // book.currencyCode = book.listPrice.currencyCode
-                    // book.isOnSale = book.listPrice.isOnSale
-                    // delete book.listPrice
                     setBookToEdit(book)
                     showSuccessMsg('Book fetched successfuly!')
                 })
@@ -84,14 +80,12 @@ export function BookEdit() {
 
         if (field === 'amount' || field === 'currencyCode' || field === 'isOnSale') {
 
-            console.log(field)
             return setBookToEdit((prevBook) => ({ ...prevBook, listPrice: { ...prevBook.listPrice, [field]: value } }))
         }
 
         setBookToEdit((prevBook) => ({ ...prevBook, [field]: value }))
     }
 
-    console.log(bookToEdit)
     const { authors, categories, description, language, pageCount, publishedDate, subtitle, title } = bookToEdit
     const { amount, currencyCode, isOnSale } = bookToEdit.listPrice
 
