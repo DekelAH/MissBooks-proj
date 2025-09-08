@@ -75,12 +75,16 @@ function addReview(bookId, review) {
     return get(bookId)
         .then(book => {
 
+            review.id = utilService.makeId();
             if (!book.reviews) {
                 let newReviews = []
-                book.reviews = newReviews.push(review)
+                newReviews.push(review)
+                book.reviews = newReviews
+                return save(book)
             }
 
             book.reviews.push(review)
+            save(book)
         })
 }
 
@@ -158,7 +162,15 @@ function _createBooks() {
                 listPrice: {
                     amount: utilService.getRandomIntInclusive(80, 500),
                     currencyCode: "EUR", isOnSale: Math.random() > 0.7
-                }
+                },
+                reviews: [
+                    {
+                        id: utilService.makeId(),
+                        fullname: utilService.makeLorem(1),
+                        rating: utilService.getRandomIntInclusive(1, 5),
+                        readAt: new Date().toLocaleDateString()
+                    }
+                ]
             }
 
             books.push(book)
