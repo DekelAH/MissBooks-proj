@@ -9,10 +9,12 @@ const { useState } = React
 
 export function GoogleAddBook() {
 
+    const [searchTxt, setSearchTxt] = useState('')
     const [searchResults, setSearchResults] = useState()
 
     function handleSearchChange({ target }) {
 
+        setSearchTxt(target.value)
         utilService.debounce(googleBookService.query(target.value)
             .then(result => {
                 setSearchResults(result)
@@ -44,7 +46,7 @@ export function GoogleAddBook() {
             </form>
             <div className="google-search-results">
                 <ul>
-                    {searchResults &&
+                    {searchResults && searchTxt &&
                         searchResults.map(googleBook => {
 
                             return (
