@@ -31,6 +31,12 @@ export function BookDetails() {
         bookService.save(book);
     }
 
+    function onAddReview(review) {
+
+        console.log(review)
+        //reviews.push(review)
+    }
+
     return (
 
         book &&
@@ -57,13 +63,12 @@ export function BookDetails() {
             <div className="reviews-section">
                 <div className="add-review">
 
-                    <AddReview bookId={book.id} />
+                    <AddReview bookId={book.id} onAddReview={onAddReview} />
                 </div>
                 <div className="reviews">
                     <h2>Reviews</h2>
                     {reviews &&
                         reviews.map(review => {
-                            console.log(review.id);
                             return (
                                 <div className="review" key={review.id}>
                                     <h1>Name: {review.fullname}</h1>

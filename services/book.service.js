@@ -15,7 +15,8 @@ export const bookService = {
     setBookTimeStamp,
     setReadingDifficultyByPageCount,
     setPriceColor,
-    addReview
+    addReview,
+    addGoogleBook
 }
 
 function query(filterBy = {}) {
@@ -61,13 +62,28 @@ function remove(bookId) {
 
 function save(book) {
 
-    book.thumbnail = `http://ca.org/books-photos/4.jpg`;
-
     if (book.id) {
         return storageService.put(BOOK_KEY, book)
     } else {
         return storageService.post(BOOK_KEY, book)
     }
+}
+
+function addGoogleBook(googleBook) {
+
+    const isBookExist = storageService.query(BOOK_KEY)
+        .then(books => books.some(book => book.title === googleBook.volumeInfo.title))
+
+    return new Promise((resolve, reject) => {
+        if (isBookExist.then(result => !result)) {
+
+            console.log(googleBook)
+            const formattedGoogleBook = _setBookFormat(googleBook)
+            resolve(formattedGoogleBook)
+
+        }
+    })
+
 }
 
 function addReview(bookId, review) {
@@ -137,6 +153,44 @@ function _setNextPrevBookId(book) {
         book.preBookId = preBook.id
         return book
     })
+}
+
+function _setBookFormat(bookToFormat) {
+
+    let noDesc = 'No Description'
+    const formattedBook = {
+
+        authors: bookToFormat.volumeInfo.authors,
+        categories: bookToFormat.volumeInfo.categories,
+        description: bookToFormat.volumeInfo.description || noDesc,
+        language: bookToFormat.volumeInfo.language,
+        listPrice: {
+            currencyCode: "EUR",
+            isOnSale: Math.random() > 0.7,
+            amount: utilService.getRandomIntInclusive(80, 500),
+        },
+        pageCount: bookToFormat.volumeInfo.pageCount,
+        publishedDate: new Date(bookToFormat.volumeInfo.publishedDate).getFullYear(),
+        subtitle: bookToFormat.volumeInfo.subtitle,
+        thumbnail: bookToFormat.volumeInfo.imageLinks.thumbnail,
+        title: bookToFormat.volumeInfo.title,
+        reviews: [
+            {
+                id: utilService.makeId(),
+                fullname: utilService.makeLorem(1),
+                rating: utilService.getRandomIntInclusive(1, 5),
+                readAt: new Date().toLocaleDateString()
+            },
+            {
+                id: utilService.makeId(),
+                fullname: utilService.makeLorem(1),
+                rating: utilService.getRandomIntInclusive(1, 5),
+                readAt: new Date().toLocaleDateString()
+            },
+        ]
+    }
+
+    return formattedBook
 }
 
 function _createBooks() {

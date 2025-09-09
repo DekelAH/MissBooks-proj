@@ -5,7 +5,7 @@
     flex-direction: column;
     width: 400px;
     height: 450px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .book-image {

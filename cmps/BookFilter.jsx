@@ -10,8 +10,8 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
     const { txt, price, pageCount, publishedDate, onSale } = filterByToEdit
 
     useEffect(() => {
-        // console.log('Hello')
-         onSetFilterBy(filterByToEdit)
+
+        onSetFilterBy(filterByToEdit)
     }, [filterByToEdit])
 
 
@@ -41,17 +41,12 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
-    function onSubmitFilter(ev) {
-        ev.preventDefault()
-        onSetFilterBy(filterByToEdit)
-    }
-
 
     return (
 
         <section className="book-filter">
             <h2>Filter our books</h2>
-            <form className="filter-form" onSubmit={onSubmitFilter}>
+            <form className="filter-form">
                 <label htmlFor="txt">Title</label>
                 <input onChange={handleChange} type="text" value={txt} name="txt" id="txt" /> |
 
@@ -67,8 +62,6 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
 
                 <label htmlFor="onSale">On Sale</label>
                 <input onChange={handleChange} checked={isChecked} type="checkbox" value={onSale || ''} name="onSale" id="onSale" />
-
-                <button className="filter-btn" type="submit">Filter</button>
             </form>
         </section>
 

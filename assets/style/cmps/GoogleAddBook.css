@@ -1,0 +1,66 @@
+.google-add-book-section {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    width: 50vw;
+}
+
+.google-add-book-section h1 {
+
+    margin-bottom: 50px;
+}
+
+.google-add-book-form {
+
+    display: flex;
+    align-items: center;
+}
+
+.add-google-book-btn {
+
+    border-radius: 60%;
+    font-size: 0.8rem;
+    cursor: pointer;
+    width: fit-content;
+    aspect-ratio: 1;
+    align-self: end;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.google-add-book-form label {
+
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-weight: bold;
+    margin-inline-end: 20px;
+}
+
+.google-add-book-form input {
+
+    width: 300px;
+    padding: 10px;
+    margin-inline-end: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.google-search-results {
+
+    width: 50%;
+    height: 30vh;
+    margin-top: 20px;
+    border: 1px solid var(--clr1);
+    border-radius: 8px;
+    box-shadow: 1px 4px 4px 1px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+}
+
+.result {
+
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 5px;
+    align-items: center;
+}
