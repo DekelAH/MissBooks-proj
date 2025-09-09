@@ -161,7 +161,7 @@ function _setBookFormat(bookToFormat) {
     const formattedBook = {
 
         authors: bookToFormat.volumeInfo.authors,
-        categories: bookToFormat.volumeInfo.categories,
+        categories: bookToFormat.volumeInfo.categories || 'No Catergory',
         description: bookToFormat.volumeInfo.description || noDesc,
         language: bookToFormat.volumeInfo.language,
         listPrice: {
