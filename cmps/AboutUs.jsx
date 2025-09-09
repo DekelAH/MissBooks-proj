@@ -1,6 +1,7 @@
 import { utilService } from "../services/util.service.js"
+const { NavLink, Outlet } = ReactRouterDOM
 
-const { useState, useEffect, useRef } = React
+const { useRef } = React
 
 export function AboutUs() {
 
@@ -12,6 +13,14 @@ export function AboutUs() {
             <button onClick={() => {
                 utilService.animateCSS(titleRef.current)
             }}>Animate</button>
+
+            <nav className="links">
+                <NavLink to="/about-us/our-team">Our Team</NavLink>
+                <NavLink to="/about-us/our-goals">Our Goals</NavLink>
+            </nav>
+            <div className="nested-content">
+                <Outlet />
+            </div>
         </section>
     )
 }
