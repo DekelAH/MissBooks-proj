@@ -1,6 +1,7 @@
 import { bookService } from "../services/book.service.js"
 import { googleBookService } from "../services/google-book.service.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+import { utilService } from "../services/util.service.js"
 
 
 const { useState } = React
@@ -12,10 +13,11 @@ export function GoogleAddBook() {
 
     function handleSearchChange({ target }) {
 
-        googleBookService.query(target.value)
+        utilService.debounce(googleBookService.query(target.value)
             .then(result => {
                 setSearchResults(result)
-            })
+            }))
+
 
     }
 
