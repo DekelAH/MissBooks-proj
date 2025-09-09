@@ -736,8 +736,7 @@ export const googleBookService = {
 
 function query(txt) {
 
-    const encodedSearchTerm = encodeURIComponent(txt)
-    const url = `https://www.googleapis.com/books/v1/volumes?printType=books&q=intitle:${encodedSearchTerm}`
+    const url = `https://www.googleapis.com/books/v1/volumes?printType=books&q=intitle:${encodeURIComponent(txt)}`
 
     return fetch(url)
         .then(res => {
